@@ -7,7 +7,7 @@ public class Sensors {
     //ultrasonic
     public static Ultrasonic ultraBoi = new Ultrasonic(RobotMap.ultrasonicInputDIO, RobotMap.ultrasonicOutputDIO);
 
-    //if a sensor needs to be set up do it in here
+    //if a sensor needs to be setup do it in here
     public static  void SensorSetup() {
         ultraBoi.setAutomaticMode(true);
     }

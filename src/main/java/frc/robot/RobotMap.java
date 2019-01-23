@@ -15,6 +15,9 @@ public class RobotMap {
   public static int rightVictorMasterCAN = 13;
   public static int rightVicrotSlaveCAN = 14;
 
+  //Lifter we named it Scotty
+  public static int liftMeUpScottyCAN = 15;
+
   //Pneumatic
   public static int PCMCAN = 0;
   public static int hatchPusher0PCM = 0;
@@ -22,6 +25,7 @@ public class RobotMap {
 
   //Controllers
   public static int xboxUSB = 0;
+  public static int flightStickUSB = 1;
 
   //Sensors
   public static int ultrasonicInputDIO = 0;

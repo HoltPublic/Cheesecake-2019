@@ -13,11 +13,12 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 public class OI {
   //The one and only Joystick so far
   public Joystick xbox = new Joystick(RobotMap.xboxUSB);
+  public Joystick flight = new Joystick(RobotMap.flightStickUSB);
 
   //Controller Deadzone
   public static final double deadzone = 0.10;
 
-  //Classes to get the values of the left joystick of the Controller
+  //Classes to get the values of the left joystick of the xBox Controller
   public double getLeftJoyX() {
     double raw = xbox.getX(Hand.kLeft);
     return Math.abs(raw) < deadzone ? 0.0 : raw;
@@ -27,13 +28,23 @@ public class OI {
     return Math.abs(raw) < deadzone ? 0.0 : raw;
   }
 
-  //Classes to get the Values of the right joystick of the controller
+  //Classes to get the Values of the right joystick of the xBox controller
   public double getRightJoyX() {
     double raw = xbox.getX(Hand.kRight);
     return Math.abs(raw) < deadzone ? 0.0 : raw;
   }
   public double getRightJoyY() {
     double raw = xbox.getY(Hand.kRight);
+    return Math.abs(raw) < deadzone ? 0.0 : raw;
+  }
+
+  //Class to get the Values of the flightstick
+  public double getFlightJoyX() {
+    double raw = flight.getX();
+    return Math.abs(raw) < deadzone ? 0.0 : raw;
+  }
+  public double getFlightJoyY() {
+    double raw = flight.getY();
     return Math.abs(raw) < deadzone ? 0.0 : raw;
   }
 }

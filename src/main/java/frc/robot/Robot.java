@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Drivetrain.victorSetup(); //sets up the Victors
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
     frc.robot.subsystems.Sensors.SensorSetup(); //sets up the Sensors
+    frc.robot.subsystems.Lifter.LifterSetup(); //sets up the Lifter
   }
 
   @Override
@@ -74,6 +75,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY(), Robot.oi.getLeftJoyX()); //So we can drive
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
+    frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
   }
 
   @Override
