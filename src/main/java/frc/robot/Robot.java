@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -66,13 +65,12 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
-    Drivetrain.rightVictorMaster.set(0);
-    Drivetrain.leftVictorMaster.set(0);
   }
 
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    frc.robot.subsystems.ShuffleboardData.SendShuffleboardData(); // to send data to computer
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY(), Robot.oi.getLeftJoyX()); //So we can drive
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
