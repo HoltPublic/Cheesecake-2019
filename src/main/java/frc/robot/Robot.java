@@ -80,5 +80,3 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 }
-
-//Gage gonna do teach me push
