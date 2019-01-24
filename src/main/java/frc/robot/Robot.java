@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
+    CameraServer.getInstance().startAutomaticCapture();
     SmartDashboard.putData("Auto mode", chooser);
     frc.robot.subsystems.Drivetrain.victorSetup(); //sets up the Victors
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
@@ -70,7 +72,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    frc.robot.subsystems.ShuffleboardData.SendShuffleboardData(); // to send data to computer
+    //frc.robot.subsystems.ShuffleboardData.SendShuffleboardData(); // to send data to computer
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY(), Robot.oi.getLeftJoyX()); //So we can drive
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
@@ -80,5 +82,3 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 }
-
-//Gage gonna do teach me push
