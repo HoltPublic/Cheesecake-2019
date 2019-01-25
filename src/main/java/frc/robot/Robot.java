@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -24,10 +25,12 @@ public class Robot extends TimedRobot {
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);
+    CameraServer.getInstance().startAutomaticCapture(); //starts the camera
     frc.robot.subsystems.Drivetrain.victorSetup(); //sets up the Victors
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
     frc.robot.subsystems.Sensors.SensorSetup(); //sets up the Sensors
     frc.robot.subsystems.Lifter.LifterSetup(); //sets up the Lifter
+    frc.robot.subsystems.Intake.IntakeSetup(); //sets up the intake
   }
 
   @Override
@@ -74,6 +77,7 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY(), Robot.oi.getLeftJoyX()); //So we can drive
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
+    frc.robot.subsystems.Intake.IntakeRun(); //to run the Intake
   }
 
   @Override
