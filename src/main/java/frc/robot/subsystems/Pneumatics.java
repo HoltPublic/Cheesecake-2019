@@ -20,7 +20,7 @@ public class Pneumatics {
 
      //Hatch Pusher
      public static void hatchPusher() {
-        if(Robot.oi.xbox.getRawButton(RobotMap.xboxHatchPusherButton)) {
+        if(Robot.oi.flight.getRawButton(RobotMap.flightHatchPusherButton)) {
             hatchPusherSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         else {

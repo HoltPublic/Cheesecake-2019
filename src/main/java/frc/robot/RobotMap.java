@@ -32,7 +32,7 @@ public class RobotMap {
   public static int ultrasonicOutputDIO = 1;
 
   //Controllor buttons
-  public static int xboxHatchPusherButton = 5;
+  public static int flightHatchPusherButton = 1;
 
   public static int succBoiMasterCAN = 16;
   public static int succBoiSlaveCAN = 18;
