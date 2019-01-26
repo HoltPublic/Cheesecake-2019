@@ -18,6 +18,10 @@ public class RobotMap {
   //Lifter we named it Scotty
   public static int liftMeUpScottyCAN = 15;
 
+  //Intake succ boi
+  public static int succBoiMasterCAN = 17;
+  public static int succBoiSlaveCAN = 18;
+
   //Pneumatic
   public static int PCMCAN = 0;
   public static int hatchPusher0PCM = 0;
@@ -34,6 +38,4 @@ public class RobotMap {
   //Controllor buttons
   public static int flightHatchPusherButton = 1;
 
-  public static int succBoiMasterCAN = 16;
-  public static int succBoiSlaveCAN = 18;
 }
