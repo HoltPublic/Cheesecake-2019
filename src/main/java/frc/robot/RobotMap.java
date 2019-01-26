@@ -33,4 +33,7 @@ public class RobotMap {
 
   //Controllor buttons
   public static int xboxHatchPusherButton = 5;
+
+  public static int succBoiMasterCAN = 16;
+  public static int succBoiSlaveCAN = 18;
 }

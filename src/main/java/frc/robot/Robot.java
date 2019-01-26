@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 
 public class Robot extends TimedRobot {
   public static OI oi;
@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
     frc.robot.subsystems.Sensors.SensorSetup(); //sets up the Sensors
     frc.robot.subsystems.Lifter.LifterSetup(); //sets up the Lifter
+    frc.robot.subsystems.Intake.IntakeSetup();
   }
 
   @Override
@@ -72,10 +73,17 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    double yeet = 1;
     //frc.robot.subsystems.ShuffleboardData.SendShuffleboardData(); // to send data to computer
-    frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY(), Robot.oi.getLeftJoyX()); //So we can drive
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
+    if(Robot.oi.xbox.getRawButton(1)) {
+      yeet = .5;
+    }
+    else {
+      yeet = 1;
+    }
+    frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY() * yeet, Robot.oi.getLeftJoyX()); //So we can drive
   }
 
   @Override
