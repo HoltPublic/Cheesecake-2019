@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Drivetrain {
@@ -17,6 +18,7 @@ public class Drivetrain {
     //Differential Drive
     public static DifferentialDrive drive = new DifferentialDrive(rightVictorMaster, leftVictorMaster);
 
+    //Sets up the victor
     public static void victorSetup() {
         //Reset the victors so they dont die
         rightVictorMaster.configFactoryDefault();
@@ -36,6 +38,18 @@ public class Drivetrain {
         leftVictorSlave.setInverted(InvertType.FollowMaster);
 
         //fixes the thing where the right side is said to be negative
-        frc.robot.subsystems.Drivetrain.drive.setRightSideInverted(true);
+        Drivetrain.drive.setRightSideInverted(true);
+    }
+
+    //makes the robot drive at half speed when you press the button
+    public static double getDriveSpeed() {
+        double raw = Robot.oi.getLeftJoyY();
+        return Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton) ? raw * .5 : raw;
+    }
+
+    //makes the robot drive backward when you press the button
+    public static double getDriveRotation() {
+        double raw = Robot.oi.getLeftJoyX();
+        return Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton) ? raw * -1 : raw;
     }
 }

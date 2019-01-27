@@ -37,5 +37,8 @@ public class RobotMap {
 
   //Controllor buttons
   public static int flightHatchPusherButton = 1;
+  public static int slowBoiButton = 1;
+  public static int yeetMeBackBoiButton = 3;
+  public static int rumbleTestButton = 4;
 
 }

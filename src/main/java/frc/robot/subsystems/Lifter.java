@@ -17,6 +17,6 @@ public class Lifter {
     
     public static void LifterMover() {
         //the part where it makes scotty moves
-        lifterScotty.set(Robot.oi.getFlightJoyY() * .5);
+        lifterScotty.set(Robot.oi.getFlightJoyY());
     }
 }

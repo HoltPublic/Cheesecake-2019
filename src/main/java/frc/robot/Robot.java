@@ -8,20 +8,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
+import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   public static OI oi;
+  public static Camera camera;
 
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -29,39 +24,20 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
+    camera = new Camera();
     // chooser.addOption("My Auto", new MyAutoCommand());
-    new Thread(() -> {
-      UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-      camera.setResolution(640, 480);
-      
-      CvSink cvSink = CameraServer.getInstance().getVideo();
-      CvSource outputStream = CameraServer.getInstance().putVideo("Tracking", 640, 480);
-      
-      Mat source = new Mat();
-      Mat output = new Mat();
-      
-      while(!Thread.interrupted()) {
-          cvSink.grabFrame(source);
-          Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-          outputStream.putFrame(output);
-      }
-  }).start();
-
     SmartDashboard.putData("Auto mode", chooser);
-    CameraServer.getInstance().startAutomaticCapture(); //starts the camera
+    frc.robot.Camera.CameraStart();
     frc.robot.subsystems.Drivetrain.victorSetup(); //sets up the Victors
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
     frc.robot.subsystems.Sensors.SensorSetup(); //sets up the Sensors
     frc.robot.subsystems.Lifter.LifterSetup(); //sets up the Lifter
-<<<<<<< HEAD
-    frc.robot.subsystems.Intake.IntakeSetup();
-=======
     frc.robot.subsystems.Intake.IntakeSetup(); //sets up the intake
->>>>>>> 2af29c1ced4d20c9a7bf6e1c766db6d7974c2fb9
   }
 
   @Override
   public void robotPeriodic() {
+    frc.robot.subsystems.ShuffleboardData.SendShuffleboardData(); // to send data to computer
   }
 
   @Override
@@ -100,17 +76,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    double yeet = 1;
-    //frc.robot.subsystems.ShuffleboardData.SendShuffleboardData(); // to send data to computer
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
-    if(Robot.oi.xbox.getRawButton(1)) {
-      yeet = .5;
-    }
-    else {
-      yeet = 1;
-    }
-    frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Robot.oi.getLeftJoyY() * yeet, Robot.oi.getLeftJoyX()); //So we can drive
+    frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation()); //So we can drive
+    frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
   }
 
   @Override
