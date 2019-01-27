@@ -13,7 +13,7 @@ public class Camera {
             camera.setResolution(640, 480);
             
             CvSink cvSink = CameraServer.getInstance().getVideo();
-            CvSource outputStream = CameraServer.getInstance().putVideo("Tracking", 640, 480);
+            CvSource outputStream = CameraServer.getInstance().putVideo("Camera", 640, 480);
             
             Mat source = new Mat();
             Mat output = new Mat();

@@ -26,10 +26,10 @@ public class Intake {
 
     //the class to spin the intake
     public static void IntakeRun() {
-        if (Robot.oi.flight.getRawButton(3)) {
+        if (Robot.oi.flight.getRawButton(RobotMap.intakeInButton) && !Sensors.getintakeStop()) {
             succBoiMaster.set(1);
         }
-        else if (Robot.oi.flight.getRawButton(4)) {
+        else if (Robot.oi.flight.getRawButton(RobotMap.intakeOutButton)) {
             succBoiMaster.set(-1);
         }
         else {

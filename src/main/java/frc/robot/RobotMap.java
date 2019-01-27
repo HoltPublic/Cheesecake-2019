@@ -32,13 +32,14 @@ public class RobotMap {
   public static int flightStickUSB = 1;
 
   //Sensors
-  public static int ultrasonicInputDIO = 0;
-  public static int ultrasonicOutputDIO = 1;
+  public static int intakeStopSwitchDIO = 0;
 
   //Controllor buttons
   public static int flightHatchPusherButton = 1;
   public static int slowBoiButton = 1;
   public static int yeetMeBackBoiButton = 3;
   public static int rumbleTestButton = 4;
+  public static int intakeInButton = 3;
+  public static int intakeOutButton = 4;
 
 }
