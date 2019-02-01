@@ -33,7 +33,8 @@ public class RobotMap {
 
   //Sensors
   public static int intakeStopSwitchDIO = 0;
-
+  public static int hallEffectTopDIO = 1;
+  public static int hallEffectBottomDIO = 2;
   //Controllor buttons
   public static int flightHatchPusherButton = 1;
   public static int slowBoiButton = 1;

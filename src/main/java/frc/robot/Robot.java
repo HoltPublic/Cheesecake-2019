@@ -16,7 +16,7 @@ import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   public static OI oi;
-  public static Camera camera;
+  //public static Camera camera;
 
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -24,15 +24,15 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    camera = new Camera();
+    //camera = new Camera();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);
-    frc.robot.Camera.CameraStart();
+    //frc.robot.Camera.CameraStart();
     frc.robot.subsystems.Drivetrain.victorSetup(); //sets up the Victors
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
     frc.robot.subsystems.Sensors.SensorSetup(); //sets up the Sensors
     frc.robot.subsystems.Lifter.LifterSetup(); //sets up the Lifter
-    frc.robot.subsystems.Intake.IntakeSetup(); //sets up the intake
+    //frc.robot.subsystems.Intake.IntakeSetup(); //sets up the intake
   }
 
   @Override
@@ -80,6 +80,7 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation()); //So we can drive
     frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
+    //frc.robot.subsystems.Intake.IntakeRun(); //do intakey takey
   }
 
   @Override
