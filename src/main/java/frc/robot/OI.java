@@ -17,6 +17,7 @@ public class OI {
 
   //Controller Deadzone
   public static final double deadzone = 0.10;
+  public static final double flightDeadzone = 0.30;
 
   //Classes to get the values of the left joystick of the xBox Controller
   public double getLeftJoyX() {
@@ -41,10 +42,10 @@ public class OI {
   //Class to get the Values of the flightstick
   public double getFlightJoyX() {
     double raw = flight.getX();
-    return Math.abs(raw) < deadzone ? 0.0 : raw;
+    return Math.abs(raw) < flightDeadzone ? 0.0 : raw;
   }
   public double getFlightJoyY() {
     double raw = flight.getY();
-    return Math.abs(raw) < deadzone ? 0.0 : raw;
+    return Math.abs(raw) < flightDeadzone ? 0.0 : raw;
   }
 }

@@ -32,9 +32,9 @@ public class Drivetrain {
 
         //Invert so incase the motors are backwards
         //if robot does not drive stright try changing the invert first then the right side invert at the bottom
-        rightVictorMaster.setInverted(false);
+        rightVictorMaster.setInverted(true);
         rightVictorSlave.setInverted(InvertType.FollowMaster);
-        leftVictorMaster.setInverted(false);
+        leftVictorMaster.setInverted(true);
         leftVictorSlave.setInverted(InvertType.FollowMaster);
 
         //fixes the thing where the right side is said to be negative
@@ -49,7 +49,11 @@ public class Drivetrain {
 
     //makes the robot drive backward when you press the button
     public static double getDriveRotation() {
-        double raw = Robot.oi.getLeftJoyX();
-        return Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton) ? raw * -1 : raw;
+        if(Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton)) {
+            return Robot.oi.getLeftJoyX() * -1;
+        }
+        else{
+            return Robot.oi.getLeftJoyX();
+        }
     }
 }
