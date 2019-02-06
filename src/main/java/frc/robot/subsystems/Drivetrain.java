@@ -8,6 +8,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Drivetrain {
+    //Making the motors
     //Masters
     public static WPI_VictorSPX rightVictorMaster = new WPI_VictorSPX(RobotMap.rightVictorMasterCAN);
     public static WPI_VictorSPX leftVictorMaster = new WPI_VictorSPX(RobotMap.leftVictorMasterCAN);
@@ -18,9 +19,9 @@ public class Drivetrain {
     //Differential Drive
     public static DifferentialDrive drive = new DifferentialDrive(rightVictorMaster, leftVictorMaster);
 
-    //Sets up the victor
-    public static void victorSetup() {
-        //Reset the victors so they dont die
+    //Sets up the motors
+    public static void DrivetrainSetup() {
+        //Reset the victors to the default settings
         rightVictorMaster.configFactoryDefault();
         rightVictorSlave.configFactoryDefault();
         leftVictorMaster.configFactoryDefault();
@@ -30,7 +31,7 @@ public class Drivetrain {
         rightVictorSlave.follow(rightVictorMaster);
         leftVictorSlave.follow(leftVictorMaster);
 
-        //Invert so incase the motors are backwards
+        //Invert the motors incase it is backwards
         //if robot does not drive stright try changing the invert first then the right side invert at the bottom
         rightVictorMaster.setInverted(true);
         rightVictorSlave.setInverted(InvertType.FollowMaster);
@@ -41,19 +42,15 @@ public class Drivetrain {
         Drivetrain.drive.setRightSideInverted(true);
     }
 
+    //Gets the value of the joystick and returns it
     //makes the robot drive at half speed when you press the button
     public static double getDriveSpeed() {
         double raw = Robot.oi.getLeftJoyY();
         return Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton) ? raw * .5 : raw;
     }
 
-    //makes the robot drive backward when you press the button
+    //Gets the value of the joystick and returns it
     public static double getDriveRotation() {
-        if(Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton)) {
-            return Robot.oi.getLeftJoyX() * -1;
-        }
-        else{
-            return Robot.oi.getLeftJoyX();
-        }
+        return Robot.oi.getLeftJoyX();
     }
 }

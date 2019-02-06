@@ -7,26 +7,27 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Intake {
-    //intake motors
+    //Making the Motors
     public static WPI_VictorSPX succBoiMaster = new WPI_VictorSPX(RobotMap.succBoiMasterCAN);
     public static WPI_VictorSPX succBoiSlave = new WPI_VictorSPX(RobotMap.succBoiSlaveCAN);
     
+    //sets up the motors
     public static void IntakeSetup() {
-        //sets them to the mega succ
+        //sets them to the default settings
         succBoiMaster.configFactoryDefault();
         succBoiSlave.configFactoryDefault();
 
         //makes the slave follow the master
         succBoiSlave.follow(succBoiMaster);
 
-        //makes them spin in the right way
+        //Invert the motors incase it is backwards
         succBoiMaster.setInverted(false);
         succBoiSlave.setInverted(InvertType.FollowMaster);
     }
 
     //the class to spin the intake
     public static void IntakeRun() {
-        if (Robot.oi.flight.getRawButton(RobotMap.intakeInButton) && !Sensors.getintakeStop()) {
+        if (Robot.oi.flight.getRawButton(RobotMap.intakeInButton)) {
             succBoiMaster.set(1);
         }
         else if (Robot.oi.flight.getRawButton(RobotMap.intakeOutButton)) {

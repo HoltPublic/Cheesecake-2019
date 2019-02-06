@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class Pneumatics {
-    //Compressor
+    //Making the Compressor
     public static Compressor mainCompressor = new Compressor(RobotMap.PCMCAN);
 
-    //Solenoids
+    //Making the Solenoids
     public static DoubleSolenoid hatchPusherSolenoid = new DoubleSolenoid(RobotMap.hatchPusher0PCM, RobotMap.hatchPusher1PCM);
     public static Solenoid lift = new Solenoid(2);
 
-    //Things to make sure the pneumatics work
+    //Sets up the Compressor
     public static void pneumaticSetup() {
         mainCompressor.setClosedLoopControl(true);
     }
 
-     //Hatch Pusher
+     //Pushes the hatch when you press the trigger on the flightstick
      public static void hatchPusher() {
         if(Robot.oi.flight.getRawButton(RobotMap.flightHatchPusherButton)) {
             hatchPusherSolenoid.set(DoubleSolenoid.Value.kForward);

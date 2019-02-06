@@ -9,14 +9,17 @@ public class Lifter {
     //making the motor
     public static WPI_VictorSPX lifterScotty = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
 
+    //sets up the motors
     public static void LifterSetup() {
-        //sets up the victor
+        //Reset the victors to the default settings
         lifterScotty.configFactoryDefault();
+
+        //Invert the motors incase it is backwards
         lifterScotty.setInverted(false);
     }
     
+    //Moves the lifter when you move the flightstick
     public static void LifterMover() {
-        //the part where it makes scotty moves
         lifterScotty.set(Robot.oi.getFlightJoyY());
     }
 }
