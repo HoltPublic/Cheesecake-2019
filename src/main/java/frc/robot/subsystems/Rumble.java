@@ -5,6 +5,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Rumble {
+    
     //button for testing the rumble
     public static void rumbleRun() {
         if (Robot.oi.xbox.getRawButton(RobotMap.rumbleTestButton)) {

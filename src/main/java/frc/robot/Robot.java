@@ -17,10 +17,8 @@ import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   public static OI oi;
-
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
-
   @Override
   public void robotInit() {
     oi = new OI();
@@ -117,5 +115,4 @@ public class Robot extends TimedRobot {
   ░░░░░░██████░░░░░░░░██░░░░░░██░░░░░░░░██████ 
   ░░░░░░██░░░░░░░░░░████░░░░░░████░░░░░░░░░░██ 
   ░░░░░░░░██████████░░░░░░░░░░░░░░██████████ 
-  */
-  //god to help our robot
+  *///god to help our robot
