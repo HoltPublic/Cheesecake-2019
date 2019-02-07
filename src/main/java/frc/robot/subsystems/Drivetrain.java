@@ -15,7 +15,7 @@ public class Drivetrain {
     public static WPI_VictorSPX leftVictorSlave = new WPI_VictorSPX(RobotMap.leftVictorSlaveCAN);
 
     //Differential Drive
-    public static DifferentialDrive drive = new DifferentialDrive(rightVictorMaster, leftVictorMaster);
+    public static DifferentialDrive drive = new DifferentialDrive(leftVictorMaster, rightVictorMaster);
 
     //Sets up the motors
     public static void DrivetrainSetup() {
@@ -31,24 +31,44 @@ public class Drivetrain {
 
         //Invert the motors incase it is backwards
         //if robot does not drive stright try changing the invert first then the right side invert at the bottom
+        //dont change this it drives good
         rightVictorMaster.setInverted(true);
         rightVictorSlave.setInverted(InvertType.FollowMaster);
-        leftVictorMaster.setInverted(true);
+        leftVictorMaster.setInverted(false);
         leftVictorSlave.setInverted(InvertType.FollowMaster);
 
         //fixes the thing where the right side is said to be negative
-        Drivetrain.drive.setRightSideInverted(true);
+        Drivetrain.drive.setRightSideInverted(false);
     }
 
     //Gets the value of the joystick and returns it
     //makes the robot drive at half speed when you press the button
     public static double getDriveSpeed() {
-        double raw = Robot.oi.getLeftJoyY();
-        return Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton) ? raw * .5 : raw;
+        double raw;
+        if (Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton)){
+            raw = Robot.oi.getLeftJoyY() * .5;
+        }
+        else if(Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton)){
+            raw = Robot.oi.getLeftJoyY() * -1;
+        }
+        else if(Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton) && Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton)){
+            raw = Robot.oi.getLeftJoyY() -.5;
+        }
+        else{
+            raw = Robot.oi.getLeftJoyY();
+        }
+        return raw;
     }
 
     //Gets the value of the joystick and returns it
     public static double getDriveRotation() {
-        return Robot.oi.getLeftJoyX();
+        double raw;
+        if (Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton)){
+            raw = Robot.oi.getLeftJoyX() * .5;
+        }
+        else{
+            raw = Robot.oi.getLeftJoyX();
+        }
+        return raw;
     }
 }

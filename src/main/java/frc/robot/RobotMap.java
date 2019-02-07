@@ -41,5 +41,6 @@ public class RobotMap {
   public static int rumbleTestButton = 4;
   public static int intakeInButton = 3;
   public static int intakeOutButton = 4;
+  public static int yeetMeBackBoiButton = 3;
 
 }
