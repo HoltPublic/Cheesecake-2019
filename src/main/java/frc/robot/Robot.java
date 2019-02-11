@@ -8,8 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -17,13 +15,17 @@ import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   public static OI oi;
-  Command autonomousCommand;
-  SendableChooser<Command> chooser = new SendableChooser<>();
+  private static final String kDefaultAuto = "Default";
+  private static final String kCustomAuto = "My Auto";
+  private String autoSelected;
+  private final SendableChooser<String> chooser = new SendableChooser<>();
+
   @Override
   public void robotInit() {
     oi = new OI();
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", chooser);
+    chooser.setDefaultOption("Default Auto", kDefaultAuto);
+    chooser.addOption("My Auto", kCustomAuto);
+    SmartDashboard.putData("Auto choices", chooser);
     CameraServer.getInstance().startAutomaticCapture(); //starts the camera
     frc.robot.subsystems.Drivetrain.DrivetrainSetup(); //sets up the drivetrain
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
@@ -38,47 +40,33 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledInit() {
-  }
-
-  @Override
-  public void disabledPeriodic() {
-    Scheduler.getInstance().run();
-  }
-
-  @Override
   public void autonomousInit() {
-    autonomousCommand = chooser.getSelected();
-    if (autonomousCommand != null) {
-      autonomousCommand.start();
-    }
+    autoSelected = chooser.getSelected();
+    // autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    System.out.println("Auto selected: " + autoSelected);
   }
 
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
-  }
-
-  @Override
-  public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (autonomousCommand != null) {
-      autonomousCommand.cancel();
+    switch (autoSelected) {
+      case kCustomAuto:
+        // Put custom auto code here
+        break;
+      case kDefaultAuto:
+      default:
+        // Put default auto code here
+        break;
     }
   }
 
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run();
     frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation()); //So we can drive
     frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
     frc.robot.subsystems.Intake.IntakeRun(); //to run the intake
-  } 
+  }
 
   @Override
   public void testPeriodic() {
