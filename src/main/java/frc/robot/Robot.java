@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
     // autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + autoSelected);
   }
-
+  //TODO make it where you can drive in auton
   @Override
   public void autonomousPeriodic() {
     switch (autoSelected) {
