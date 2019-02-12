@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
     chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    chooser.addOption("My Auto", kCustomAuto);
+    chooser.addOption("Drive Forward Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", chooser);
     frc.robot.subsystems.Drivetrain.DrivetrainSetup(); //sets up the drivetrain
     frc.robot.subsystems.Pneumatics.pneumaticSetup(); //sets up the pneumatics
@@ -59,17 +59,16 @@ public class Robot extends TimedRobot {
     // autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + autoSelected);
   }
-  //TODO make it where you can drive in auton
+
   @Override
   public void autonomousPeriodic() {
     switch (autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
-        break;
-      case kDefaultAuto:
+    case kDefaultAuto:
       default:
         // Put default auto code here
-        frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation());
+        teleopPeriodic();
         break;
     }
   }

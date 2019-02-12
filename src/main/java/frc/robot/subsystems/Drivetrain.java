@@ -38,7 +38,7 @@ public class Drivetrain {
         leftVictorSlave.setInverted(InvertType.FollowMaster);
 
         //fixes the thing where the right side is said to be negative
-        Drivetrain.drive.setRightSideInverted(false);
+        Drivetrain.drive.setRightSideInverted(true);
     }
 
     //Gets the value of the joystick and returns it
