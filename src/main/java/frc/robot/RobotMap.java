@@ -16,10 +16,15 @@ public class RobotMap {
 
   //Lifter I named it Scotty
   public static int liftMeUpScottyCAN = 15;
+  public static int hatchLatchCAN = 19;
+  public static int hatchLatchFlightOpenButton = 3;
+  public static int hatchLatchFlightCLoseButton = 4;
+
 
   //Intake
-  public static int succBoiMasterCAN = 17;
-  public static int succBoiSlaveCAN = 18;
+  public static int succBoiTopCAN = 16;
+  public static int succBoiBottomCAN = 18;
+  public static int armMoverCAN = 17;
 
   //Pneumatic
   public static int PCMCAN = 0;
@@ -35,12 +40,16 @@ public class RobotMap {
   public static int halleffectTopBoi = 1;
   public static int halleffectBottomBoi = 2;
 
-  //Controllor buttons
-  public static int flightHatchPusherButton = 1;
-  public static int slowBoiButton = 1;
-  public static int rumbleTestButton = 4;
-  public static int intakeInButton = 3;
-  public static int intakeOutButton = 4;
-  public static int yeetMeBackBoiButton = 5;
-  public static int cameraSwitcherButton = 5;
+  //Xbox buttons
+  public static int slowBoiXboxButton = 1;
+  public static int rumbleTestXboxButton = 4;
+  public static int yeetMeBackBoiXboxButton = 5;
+  public static int cameraSwitcherXboxButton = 5;
+
+  //Flightstick buttons
+  public static int hatchPusherFlightButton = 1;
+  public static int intakeInFlightButton = 6;
+  public static int intakeOutFlightButton = 9;
+  public static int armMoveUpFlightButton = 5;
+  public static int armMoveDownFlightButton = 10;
 }

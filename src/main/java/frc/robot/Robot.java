@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
     frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation()); //So we can drive
     frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
-    frc.robot.subsystems.Intake.IntakeRun(); //to run the intake
+    frc.robot.subsystems.Intake.BallIntake(); //to run the intake
     frc.robot.subsystems.CameraSwitch.TimeToSwitch(); //to switch the cameras
   }
 

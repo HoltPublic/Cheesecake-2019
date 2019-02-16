@@ -8,7 +8,7 @@ public class Rumble {
     
     //button for testing the rumble
     public static void rumbleRun() {
-        if (Robot.oi.xbox.getRawButton(RobotMap.rumbleTestButton)) {
+        if (Robot.oi.xbox.getRawButton(RobotMap.rumbleTestXboxButton)) {
             Robot.oi.xbox.setRumble(RumbleType.kRightRumble, 1);
             Robot.oi.xbox.setRumble(RumbleType.kLeftRumble, 1);
         }
