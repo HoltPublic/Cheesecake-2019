@@ -75,11 +75,20 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
+    //So we can drive
+    frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation());
+
+    //All the stuff for the lift
     frc.robot.subsystems.Lifter.LifterMover(); //to move the lifter
-    frc.robot.subsystems.Drivetrain.drive.arcadeDrive(Drivetrain.getDriveSpeed(), Drivetrain.getDriveRotation()); //So we can drive
-    frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
+    frc.robot.subsystems.Pneumatics.hatchPusher(); //to push the hatch
+    frc.robot.subsystems.Lifter.HatchLatchMove(); // to grab and relese the hatch pannel
+    
+    //All the stuff for the intake
     frc.robot.subsystems.Intake.BallIntake(); //to run the intake
+    frc.robot.subsystems.Intake.ArmMover(); //to move the arm up and down
+
+    //All the other stuff
+    frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
     frc.robot.subsystems.CameraSwitch.TimeToSwitch(); //to switch the cameras
   }
 
