@@ -20,7 +20,6 @@ public class RobotMap {
   public static int hatchLatchFlightOpenButton = 3;
   public static int hatchLatchFlightCLoseButton = 4;
 
-
   //Intake
   public static int succBoiTopCAN = 16;
   public static int succBoiBottomCAN = 18;

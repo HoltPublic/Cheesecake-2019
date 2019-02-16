@@ -8,7 +8,6 @@ public class Intake {
     //Making the Motors
     public static WPI_VictorSPX succBoiTop = new WPI_VictorSPX(RobotMap.succBoiTopCAN);
     public static WPI_VictorSPX succBoiBottom = new WPI_VictorSPX(RobotMap.succBoiBottomCAN);
-
     public static WPI_VictorSPX armMoverMotor = new WPI_VictorSPX(RobotMap.armMoverCAN);
     
     //sets up the motors
@@ -18,7 +17,7 @@ public class Intake {
         succBoiBottom.configFactoryDefault();
         armMoverMotor.configFactoryDefault();
 
-        //Invert the motors incase it is backwards
+        //Invert the motors incase they are backwards
         succBoiTop.setInverted(false);
         succBoiBottom.setInverted(false);
         armMoverMotor.setInverted(false);
@@ -26,36 +25,28 @@ public class Intake {
 
     //the class to spin the intake
     public static void BallIntake() {
-        int InDirection = 1;
-        int OutDirection = -1;
-        int Stop = 0;
-        
         if (Robot.oi.flight.getRawButton(RobotMap.intakeInFlightButton)) {
-            succBoiTop.set(InDirection);
-            succBoiBottom.set(InDirection);
+            succBoiTop.set(1);
+            succBoiBottom.set(1);
         }
         else if (Robot.oi.flight.getRawButton(RobotMap.intakeOutFlightButton)) {
-            succBoiTop.set(OutDirection);
-            succBoiBottom.set(OutDirection);
+            succBoiTop.set(-1);
+            succBoiBottom.set(-1);
         }
         else {
-            succBoiTop.set(Stop);
-            succBoiBottom.set(Stop);
+            succBoiTop.set(0);
+            succBoiBottom.set(0);
         }
     }
 
     //moves the arm that the intake in on
     public static void ArmMover() {
-        int UpDirection = 1;
-        int DownDirection = 1;
-        int Stop = 0;
-
         if (Robot.oi.flight.getRawButton(RobotMap.armMoveUpFlightButton)) {
-            armMoverMotor.set(UpDirection);
+            armMoverMotor.set(1);
         } else if (Robot.oi.flight.getRawButton(RobotMap.armMoveDownFlightButton)) {
-            armMoverMotor.set(DownDirection);
+            armMoverMotor.set(-1);
         } else {
-            armMoverMotor.set(Stop);
+            armMoverMotor.set(0);
         }
     }
 } 

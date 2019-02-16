@@ -11,22 +11,15 @@ public class Lifter {
     public static WPI_VictorSPX lifterScotty = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
     public static WPI_TalonSRX hatchLatch = new WPI_TalonSRX(RobotMap.hatchLatchCAN);
 
-    public static void HatchLatchSetup() {
-        
-
-    }
-
     //sets up the motors
     public static void LifterSetup() {
         //Reset the victors to the default settings
         lifterScotty.configFactoryDefault();
         hatchLatch.configFactoryDefault();
 
-
         //Invert the motors incase it is backwards
         lifterScotty.setInverted(false);
         hatchLatch.setInverted(false);
-
     }
     
     //Moves the lifter when you move the flightstick
@@ -34,6 +27,7 @@ public class Lifter {
         lifterScotty.set(Robot.oi.getFlightJoyY());
     }
 
+    //Moves the hatch grabber
     public static void HatchLatchMove() {
         if (Robot.oi.flight.getRawButton(RobotMap.hatchLatchFlightOpenButton)) {
             hatchLatch.set(1);
