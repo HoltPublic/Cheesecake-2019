@@ -32,7 +32,7 @@ public class Drivetrain {
         //Invert the motors incase it is backwards
         //if robot does not drive stright try changing the invert first then the right side invert at the bottom
         //dont change this it drives good
-        rightVictorMaster.setInverted(true);
+        rightVictorMaster.setInverted(false);
         rightVictorSlave.setInverted(InvertType.FollowMaster);
         leftVictorMaster.setInverted(false);
         leftVictorSlave.setInverted(InvertType.FollowMaster);
@@ -52,7 +52,7 @@ public class Drivetrain {
             raw = Robot.oi.getLeftJoyY() * -1;
         }
         else if(Robot.oi.xbox.getRawButton(RobotMap.slowBoiButton) && Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiButton)){
-            raw = Robot.oi.getLeftJoyY() -.5;
+            raw = Robot.oi.getLeftJoyY() * -.5;
         }
         else{
             raw = Robot.oi.getLeftJoyY();
