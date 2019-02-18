@@ -19,19 +19,19 @@ public class Intake {
 
         //Invert the motors incase they are backwards
         succBoiTop.setInverted(false);
-        succBoiBottom.setInverted(false);
-        armMoverMotor.setInverted(false);
+        succBoiBottom.setInverted(true);
+        armMoverMotor.setInverted(true);
     }
 
     //the class to spin the intake
     public static void BallIntake() {
         if (Robot.oi.flight.getRawButton(RobotMap.intakeInFlightButton)) {
-            succBoiTop.set(1);
-            succBoiBottom.set(1);
+            succBoiTop.set(.75);
+            succBoiBottom.set(.75);
         }
         else if (Robot.oi.flight.getRawButton(RobotMap.intakeOutFlightButton)) {
-            succBoiTop.set(-1);
-            succBoiBottom.set(-1);
+            succBoiTop.set(-.75);
+            succBoiBottom.set(-.75);
         }
         else {
             succBoiTop.set(0);
@@ -42,9 +42,9 @@ public class Intake {
     //moves the arm that the intake in on
     public static void ArmMover() {
         if (Robot.oi.flight.getRawButton(RobotMap.armMoveUpFlightButton)) {
-            armMoverMotor.set(1);
+            armMoverMotor.set(.5);
         } else if (Robot.oi.flight.getRawButton(RobotMap.armMoveDownFlightButton)) {
-            armMoverMotor.set(-1);
+            armMoverMotor.set(-.5);
         } else {
             armMoverMotor.set(0);
         }

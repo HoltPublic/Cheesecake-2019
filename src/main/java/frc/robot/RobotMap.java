@@ -15,15 +15,15 @@ public class RobotMap {
   public static int rightVicrotSlaveCAN = 14;
 
   //Lifter I named it Scotty
-  public static int liftMeUpScottyCAN = 15;
+  public static int liftMeUpScottyCAN = 16;
   public static int hatchLatchCAN = 19;
   public static int hatchLatchFlightOpenButton = 3;
   public static int hatchLatchFlightCLoseButton = 4;
 
   //Intake
-  public static int succBoiTopCAN = 16;
-  public static int succBoiBottomCAN = 18;
-  public static int armMoverCAN = 17;
+  public static int succBoiTopCAN = 15;
+  public static int succBoiBottomCAN = 17;
+  public static int armMoverCAN = 18;
 
   //Pneumatic
   public static int PCMCAN = 0;

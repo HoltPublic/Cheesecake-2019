@@ -5,7 +5,6 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//TODO: Update project on school laptop
 
 package frc.robot;
 
