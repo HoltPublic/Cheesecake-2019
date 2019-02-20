@@ -49,13 +49,13 @@ public class Drivetrain {
             raw = Robot.oi.getLeftJoyY() * .5;
         }
         else if(Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiXboxButton)){
-            raw = Robot.oi.getLeftJoyY() * -1;
+            raw = Robot.oi.getLeftJoyY() * -.8;
         }
         else if(Robot.oi.xbox.getRawButton(RobotMap.slowBoiXboxButton) && Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiXboxButton)){
             raw = Robot.oi.getLeftJoyY() * -.5;
         }
         else{
-            raw = Robot.oi.getLeftJoyY();
+            raw = Robot.oi.getLeftJoyY() * .8;
         }
         return raw;
     }
@@ -67,7 +67,7 @@ public class Drivetrain {
             raw = Robot.oi.getLeftJoyX() * .5;
         }
         else{
-            raw = Robot.oi.getLeftJoyX();
+            raw = Robot.oi.getLeftJoyX() * .8;
         }
         return raw;
     }

@@ -19,7 +19,7 @@ public class Lifter {
 
         //Invert the motors incase it is backwards
         lifterScotty.setInverted(false);
-        hatchLatch.setInverted(true);
+        hatchLatch.setInverted(false);
     }
     
     //Moves the lifter when you move the flightstick
