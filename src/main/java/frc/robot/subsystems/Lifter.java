@@ -29,10 +29,10 @@ public class Lifter {
 
     //Moves the hatch grabber
     public static void HatchLatchMove() {
-        if (Robot.oi.flight.getRawButton(RobotMap.hatchLatchFlightOpenButton)) {
+        if (Robot.oi.hatchOpenButton.get()) {
             hatchLatch.set(1);
         }
-        else if (Robot.oi.flight.getRawButton(RobotMap.hatchLatchFlightCLoseButton)) {
+        else if (Robot.oi.hatchCloseButton.get()) {
             hatchLatch.set(-1);
         }
         else {

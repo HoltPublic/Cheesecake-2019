@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
   //The one and only Joystick so far
@@ -18,6 +20,21 @@ public class OI {
   //Controller Deadzone
   public static final double deadzone = 0.10;
   public static final double flightDeadzone = 0.30;
+
+  //Buttons
+  //xbox
+  public Button slowBoiButton = new JoystickButton(xbox, RobotMap.slowBoiXboxButton);
+  public Button yeetMeBackButton = new JoystickButton(xbox, RobotMap.yeetMeBackBoiXboxButton);
+  public Button rumbleButton = new JoystickButton(xbox, RobotMap.rumbleTestXboxButton);
+  public Button cameraSwitchButton = new JoystickButton(xbox, RobotMap.cameraSwitcherXboxButton);
+  //flight stick
+  public Button hatchPusherButton = new JoystickButton(flight, RobotMap.hatchPusherFlightButton);
+  public Button intakeInButton = new JoystickButton(flight, RobotMap.intakeInFlightButton);
+  public Button intakeOutButton = new JoystickButton(flight, RobotMap.intakeOutFlightButton);
+  public Button armMoveUpButton = new JoystickButton(flight, RobotMap.armMoveUpFlightButton);
+  public Button armMoveDownButton = new JoystickButton(flight, RobotMap.armMoveDownFlightButton);
+  public Button hatchOpenButton = new JoystickButton(flight, RobotMap.hatchLatchFlightOpenButton);
+  public Button hatchCloseButton = new JoystickButton(flight, RobotMap.hatchLatchFlightOpenButton);
 
   //Classes to get the values of the left joystick of the xBox Controller
   public double getLeftJoyX() {

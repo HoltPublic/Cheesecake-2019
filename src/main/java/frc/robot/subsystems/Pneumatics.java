@@ -20,7 +20,7 @@ public class Pneumatics {
 
      //Pushes the hatch when you press the trigger on the flightstick
      public static void hatchPusher() {
-        if(Robot.oi.flight.getRawButton(RobotMap.hatchPusherFlightButton)) {
+        if(Robot.oi.hatchPusherButton.get()) {
             hatchPusherSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         else {

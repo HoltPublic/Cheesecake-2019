@@ -25,11 +25,11 @@ public class Intake {
 
     //the class to spin the intake
     public static void BallIntake() {
-        if (Robot.oi.flight.getRawButton(RobotMap.intakeInFlightButton)) {
+        if (Robot.oi.intakeInButton.get()) {
             succBoiTop.set(.75);
             succBoiBottom.set(.75);
         }
-        else if (Robot.oi.flight.getRawButton(RobotMap.intakeOutFlightButton)) {
+        else if (Robot.oi.intakeOutButton.get()) {
             succBoiTop.set(-.75);
             succBoiBottom.set(-.75);
         }
@@ -41,9 +41,9 @@ public class Intake {
 
     //moves the arm that the intake in on
     public static void ArmMover() {
-        if (Robot.oi.flight.getRawButton(RobotMap.armMoveUpFlightButton)) {
+        if (Robot.oi.armMoveUpButton.get()) {
             armMoverMotor.set(.5);
-        } else if (Robot.oi.flight.getRawButton(RobotMap.armMoveDownFlightButton)) {
+        } else if (Robot.oi.armMoveDownButton.get()) {
             armMoverMotor.set(-.5);
         } else {
             armMoverMotor.set(0);

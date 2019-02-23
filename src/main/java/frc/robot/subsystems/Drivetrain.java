@@ -45,13 +45,13 @@ public class Drivetrain {
     //makes the robot drive at half speed when you press the button
     public static double getDriveSpeed() {
         double raw;
-        if (Robot.oi.xbox.getRawButton(RobotMap.slowBoiXboxButton)){
+        if (Robot.oi.slowBoiButton.get()){
             raw = Robot.oi.getLeftJoyY() * .5;
         }
-        else if(Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiXboxButton)){
+        else if(Robot.oi.yeetMeBackButton.get()){
             raw = Robot.oi.getLeftJoyY() * -.8;
         }
-        else if(Robot.oi.xbox.getRawButton(RobotMap.slowBoiXboxButton) && Robot.oi.xbox.getRawButton(RobotMap.yeetMeBackBoiXboxButton)){
+        else if(Robot.oi.slowBoiButton.get() && Robot.oi.yeetMeBackButton.get()){
             raw = Robot.oi.getLeftJoyY() * -.5;
         }
         else{
@@ -63,7 +63,7 @@ public class Drivetrain {
     //Gets the value of the joystick and returns it
     public static double getDriveRotation() {
         double raw;
-        if (Robot.oi.xbox.getRawButton(RobotMap.slowBoiXboxButton)){
+        if (Robot.oi.slowBoiButton.get()){
             raw = Robot.oi.getLeftJoyX() * .5;
         }
         else{
