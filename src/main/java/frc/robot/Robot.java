@@ -43,8 +43,8 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Intake.IntakeSetup(); //sets up the intake
     //Camera stuff
     //da cameras
-    liftCamera = CameraServer.getInstance().startAutomaticCapture(0);
-    cargoCamera = CameraServer.getInstance().startAutomaticCapture(1);
+    cargoCamera = CameraServer.getInstance().startAutomaticCapture(0);
+    liftCamera = CameraServer.getInstance().startAutomaticCapture(1);
 
     //da camera server
     serverToSee = CameraServer.getInstance().getServer();
