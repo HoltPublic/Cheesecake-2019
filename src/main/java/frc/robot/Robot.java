@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    ShowLogo.yeet();
     oi = new OI();
     chooser.setDefaultOption("Default Auto", kDefaultAuto);
     chooser.addOption("Drive Forward Auto", kCustomAuto);
