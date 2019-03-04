@@ -10,7 +10,6 @@ public class Lifter {
     //making the motor
     public static WPI_VictorSPX lifterScotty = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
     public static WPI_TalonSRX hatchLatch = new WPI_TalonSRX(RobotMap.hatchLatchCAN);
-
     //sets up the motors
     public static void LifterSetup() {
         //Reset the victors to the default settings

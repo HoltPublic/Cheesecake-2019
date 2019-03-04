@@ -34,7 +34,7 @@ public class OI {
   public Button armMoveUpButton = new JoystickButton(flight, RobotMap.armMoveUpFlightButton);
   public Button armMoveDownButton = new JoystickButton(flight, RobotMap.armMoveDownFlightButton);
   public Button hatchOpenButton = new JoystickButton(flight, RobotMap.hatchLatchFlightOpenButton);
-  public Button hatchCloseButton = new JoystickButton(flight, RobotMap.hatchLatchFlightOpenButton);
+  public Button hatchCloseButton = new JoystickButton(flight, RobotMap.hatchLatchFlightCloseButton);
 
   //Classes to get the values of the left joystick of the xBox Controller
   public double getLeftJoyX() {

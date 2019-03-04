@@ -50,5 +50,5 @@ public class RobotMap {
   public static int armMoveUpFlightButton = 5;
   public static int armMoveDownFlightButton = 10;
   public static int hatchLatchFlightOpenButton = 3;
-  public static int hatchLatchFlightCLoseButton = 4;
+  public static int hatchLatchFlightCloseButton = 4;
 }
