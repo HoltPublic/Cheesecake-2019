@@ -22,6 +22,8 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String autoSelected;
   private final SendableChooser<String> chooser = new SendableChooser<>();
+  private int autonTimeOut = 0;
+
   
   //camera stuff
   public static UsbCamera liftCamera;
@@ -64,18 +66,17 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
-    int autonTimeOut = 0;
     switch (autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
-        //TODO fix this
-        while(autonTimeOut < 250) {
-          frc.robot.subsystems.Drivetrain.rightVictorMaster.set(.5);
-          frc.robot.subsystems.Drivetrain.leftVictorMaster.set(.5);
-          autonTimeOut++;
+        if(autonTimeOut > 250){
+          frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
+          frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
+        } else if( autonTimeOut < 250) {
+          frc.robot.subsystems.Drivetrain.leftVictorMaster.set(-0.25);
+          frc.robot.subsystems.Drivetrain.rightVictorMaster.set(-0.25);
         }
-        frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
-        frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
+        autonTimeOut = autonTimeOut + 1;
     case kDefaultAuto:
       default:
         // Put default auto code here
