@@ -5,4 +5,6 @@ public class Sensors {
     public static void SensorSetup() {
     }
 
+    public static void getHatchStopTop() {
+    }
 }

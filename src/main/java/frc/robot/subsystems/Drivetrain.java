@@ -15,7 +15,7 @@ public class Drivetrain {
     public static WPI_VictorSPX leftVictorSlave = new WPI_VictorSPX(RobotMap.leftVictorSlaveCAN);
 
     //Differential Drive
-    public static DifferentialDrive drive = new DifferentialDrive(leftVictorMaster, rightVictorMaster);
+    public static DifferentialDrive drive = new DifferentialDrive(rightVictorMaster, leftVictorMaster);
 
     //Sets up the motors
     public static void DrivetrainSetup() {

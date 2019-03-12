@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   public static UsbCamera liftCamera;
   public static UsbCamera cargoCamera;
   public static VideoSink serverToSee;
-  public static boolean prevTrigger = false;
+  public static boolean prevTrigger = true;
 
   @Override
   public void robotInit() {
@@ -45,8 +45,8 @@ public class Robot extends TimedRobot {
     frc.robot.subsystems.Intake.IntakeSetup(); //sets up the intake
     //Camera stuff
     //da cameras
-    cargoCamera = CameraServer.getInstance().startAutomaticCapture(0);
-    liftCamera = CameraServer.getInstance().startAutomaticCapture(1);
+    cargoCamera = CameraServer.getInstance().startAutomaticCapture(1);
+    liftCamera = CameraServer.getInstance().startAutomaticCapture(0);
 
     //da camera server
     serverToSee = CameraServer.getInstance().getServer();
@@ -64,24 +64,42 @@ public class Robot extends TimedRobot {
     System.out.println("Auto selected: " + autoSelected);
   }
 
+  int autonDelay = 0;
+
   @Override
   public void autonomousPeriodic() {
-    switch (autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        if(autonTimeOut > 250){
-          frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
-          frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
-        } else if( autonTimeOut < 250) {
-          frc.robot.subsystems.Drivetrain.leftVictorMaster.set(-0.25);
-          frc.robot.subsystems.Drivetrain.rightVictorMaster.set(-0.25);
-        }
-        autonTimeOut = autonTimeOut + 1;
-    case kDefaultAuto:
-      default:
-        // Put default auto code here
-        teleopPeriodic();
-        break;
+    if (autonDelay == 0) {
+      switch (autoSelected) {
+        case kCustomAuto:
+          // Put custom auto code here
+          //teleopPeriodic();
+          if(autonTimeOut > 725){
+            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
+            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
+          } else if( autonTimeOut < 725) {
+            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(-0.25);
+            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0.25);
+          }
+          autonTimeOut = autonTimeOut + 1;
+          
+      case kDefaultAuto:
+        default:
+          // Put default auto code here
+          //teleopPeriodic();
+          
+          if(autonTimeOut > 725){
+            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
+            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
+          } else if( autonTimeOut < 725) {
+            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(-0.25);
+            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0.25);
+          }
+          autonTimeOut = autonTimeOut + 1;
+          
+          break;
+      }
+    } else {
+      autonDelay--;
     }
   }
 
@@ -101,7 +119,7 @@ public class Robot extends TimedRobot {
 
     //All the other stuff
     frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
-    frc.robot.subsystems.CameraSwitch.TimeToSwitch(); //to switch the cameras
+    //frc.robot.subsystems.CameraSwitch.TimeToSwitch(); //to switch the cameras
   }
 
   @Override

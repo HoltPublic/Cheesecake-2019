@@ -33,9 +33,8 @@ public class RobotMap {
   public static int flightStickUSB = 1;
 
   //Sensors
-  public static int intakeStopSwitchDIO = 0;
-  public static int halleffectTopBoi = 1;
-  public static int halleffectBottomBoi = 2;
+  public static int hatchStopTopDIO = 0;
+  public static int hatchStopBottomDIO = 1;
 
   //Xbox buttons
   public static int slowBoiXboxButton = 1;
@@ -51,4 +50,5 @@ public class RobotMap {
   public static int armMoveDownFlightButton = 10;
   public static int hatchLatchFlightOpenButton = 3;
   public static int hatchLatchFlightCloseButton = 4;
+  public static int ballIntakeInFastButton = 11;
 }

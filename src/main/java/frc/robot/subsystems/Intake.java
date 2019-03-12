@@ -33,6 +33,10 @@ public class Intake {
             succBoiTop.set(-.75);
             succBoiBottom.set(-.75);
         }
+        else if (Robot.oi.ballIntakeInFast.get()) {
+            succBoiTop.set(.9);
+            succBoiBottom.set(-.9);
+        }
         else {
             succBoiTop.set(0);
             succBoiBottom.set(0);
