@@ -22,8 +22,6 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String autoSelected;
   private final SendableChooser<String> chooser = new SendableChooser<>();
-  private int autonTimeOut = 0;
-
   
   //camera stuff
   public static UsbCamera liftCamera;
@@ -64,43 +62,9 @@ public class Robot extends TimedRobot {
     System.out.println("Auto selected: " + autoSelected);
   }
 
-  int autonDelay = 0;
-
   @Override
   public void autonomousPeriodic() {
-    if (autonDelay == 0) {
-      switch (autoSelected) {
-        case kCustomAuto:
-          // Put custom auto code here
-          //teleopPeriodic();
-          if(autonTimeOut > 725){
-            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
-            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
-          } else if( autonTimeOut < 725) {
-            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(-0.25);
-            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0.25);
-          }
-          autonTimeOut = autonTimeOut + 1;
-          
-      case kDefaultAuto:
-        default:
-          // Put default auto code here
-          //teleopPeriodic();
-          
-          if(autonTimeOut > 725){
-            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(0);
-            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0);
-          } else if( autonTimeOut < 725) {
-            frc.robot.subsystems.Drivetrain.leftVictorMaster.set(-0.25);
-            frc.robot.subsystems.Drivetrain.rightVictorMaster.set(0.25);
-          }
-          autonTimeOut = autonTimeOut + 1;
-          
-          break;
-      }
-    } else {
-      autonDelay--;
-    }
+    teleopPeriodic();
   }
 
   @Override

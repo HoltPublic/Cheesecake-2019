@@ -1,34 +1,35 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Lifter {
     //making the motor
-    public static WPI_VictorSPX lifterScotty = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
+    //public static WPI_VictorSPX lifterScotty = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
     public static WPI_TalonSRX hatchLatch = new WPI_TalonSRX(RobotMap.hatchLatchCAN);
     public static DigitalInput hatchStopTopLS = new DigitalInput(RobotMap.hatchStopTopDIO);
     public static DigitalInput hatchStopBottonLS = new DigitalInput(RobotMap.hatchStopBottomDIO);
+    public static WPI_VictorSPX theLift = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
 
     //sets up the motors
     public static void LifterSetup() {
         //Reset the victors to the default settings
-        lifterScotty.configFactoryDefault();
+        //lifterScotty.configFactoryDefault();
         hatchLatch.configFactoryDefault();
 
         //Invert the motors incase it is backwards
-        lifterScotty.setInverted(false);
+        //lifterScotty.setInverted(false);
         hatchLatch.setInverted(false);
     }
     
     //Moves the lifter when you move the flightstick
     public static void LifterMover() {
-        lifterScotty.set(Robot.oi.getFlightJoyY());
+     theLift.set(Robot.oi.getFlightJoyY());
     }
 
     //Moves the hatch grabber

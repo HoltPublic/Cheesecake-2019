@@ -9,6 +9,7 @@ public class Intake {
     public static WPI_VictorSPX succBoiTop = new WPI_VictorSPX(RobotMap.succBoiTopCAN);
     public static WPI_VictorSPX succBoiBottom = new WPI_VictorSPX(RobotMap.succBoiBottomCAN);
     public static WPI_VictorSPX armMoverMotor = new WPI_VictorSPX(RobotMap.armMoverCAN);
+    public static WPI_VictorSPX armMoverMotorSlave = new WPI_VictorSPX(RobotMap.liftMeUpScottyCAN);
     
     //sets up the motors
     public static void IntakeSetup() {
@@ -16,11 +17,15 @@ public class Intake {
         succBoiTop.configFactoryDefault();
         succBoiBottom.configFactoryDefault();
         armMoverMotor.configFactoryDefault();
+        armMoverMotorSlave.configFactoryDefault();
+
+        armMoverMotorSlave.follow(armMoverMotor);
 
         //Invert the motors incase they are backwards
         succBoiTop.setInverted(false);
         succBoiBottom.setInverted(true);
         armMoverMotor.setInverted(true);
+        armMoverMotorSlave.setInverted(false); //<===========this one
     }
 
     //the class to spin the intake
@@ -34,8 +39,8 @@ public class Intake {
             succBoiBottom.set(-.75);
         }
         else if (Robot.oi.ballIntakeInFast.get()) {
-            succBoiTop.set(.9);
-            succBoiBottom.set(-.9);
+            succBoiTop.set(-.9);
+            succBoiBottom.set(.9);
         }
         else {
             succBoiTop.set(0);
