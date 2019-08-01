@@ -22,6 +22,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String autoSelected;
   private final SendableChooser<String> chooser = new SendableChooser<>();
+  boolean goingToWin;
   
   //camera stuff
   public static UsbCamera liftCamera;
@@ -84,6 +85,11 @@ public class Robot extends TimedRobot {
     //All the other stuff
     frc.robot.subsystems.Rumble.rumbleRun(); //test the rumble
     //frc.robot.subsystems.CameraSwitch.TimeToSwitch(); //to switch the cameras
+
+    if(goingToWin = false){
+      goingToWin = true;
+    }
+
   }
 
   @Override
