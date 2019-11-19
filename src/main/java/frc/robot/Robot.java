@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String autoSelected;
   private final SendableChooser<String> chooser = new SendableChooser<>();
-  boolean goingToWin;
+  boolean goingToWin = false;
   
   //camera stuff
   public static UsbCamera liftCamera;
